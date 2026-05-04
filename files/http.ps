@@ -1,0 +1,27 @@
+use async
+use http
+
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InplcmFsbGRtY0BnbWFpbC5jb20iLCJleHAiOjE3NzI3NzUzMTYsImlkIjoxMCwibmFtZSI6IndlbGxkb25lIn0.MCGCgQIhoDFpeWf0dZLjRorOwDg2t1UZmE6ejvsdHDc'
+
+interface APIStatus {
+    ok: boolean,
+    version: version
+}
+
+DOM.body.appendChild(render { <button>Got it!</button> })
+
+DOM.q("button").on("click", () => {
+    http.send(
+        {
+            type: "GET",
+            url: "https://go.yurba.one/api/status",
+            output: apiStatusHandler,
+            outputType: "json"
+        }
+    )
+})
+
+fn apiStatusHandler(data) {
+    let checkedData: APIStatus = data.data
+    log(checkedData)
+}

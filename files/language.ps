@@ -1,0 +1,10 @@
+use async
+use language
+
+const lang = new Language("/files/languages")
+await lang.add("en")
+await lang.add("uk")
+
+lang.set("en")
+
+log(lang.get("status"))

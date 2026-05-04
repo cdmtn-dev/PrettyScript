@@ -1,0 +1,12 @@
+use strict
+
+fn main() {
+    let x: object = { user1: "John", user2: "Mike" };
+    return 0;
+}
+
+async asyncfunc() {
+    let userAPIRes = await fetch("/api/user");
+    const userAPI = await userAPIRes.json();
+    log(userAPI);
+}

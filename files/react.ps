@@ -1,0 +1,34 @@
+// react simple example
+
+use async
+use react
+use cryptolib
+
+include "./files/strict"
+
+link("./files/css/main.css")
+
+@app fn App() {
+    const value = React.state("value", 0);
+    const sets = React.state("sets", 0);
+
+    const View: HTML = ViewComponent({ id: cryptolib.randomInt(1, 999), buttonText: "Add +1" });
+
+    View.querySelector("#plus").on("click", () => {
+        if value >= 9 {
+            value.set(0)
+            sets.set(sets + 1)
+        }
+
+        value.set(value + 1)
+    });
+
+    return View;
+}
+
+component ViewComponent {
+    <div id={id}>
+        <span#value>{value} / {sets}</span>
+        <button#plus>{buttonText}</button>
+    </div>
+}

@@ -1,0 +1,17 @@
+interface APIStatus {
+    ok: boolean,
+    version: version,
+}
+
+async init() {
+    let res = await fetch("/api")
+    let json = res.json()
+
+    const status: APIStatus = {
+        ok: json.ok,
+        version: json.version
+    }
+
+    return json
+}
+init()

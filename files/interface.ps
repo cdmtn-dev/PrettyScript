@@ -1,0 +1,49 @@
+use async
+use path
+use browser
+
+link(path.join("files", "css", "main.css"))
+
+let langData = {}
+
+interface APIStatus {
+    ok: boolean,
+    version: version,
+}
+
+http:get {
+    url: "/files/languages/" + UserAgent.lang() + ".json",
+    output: setLanguage
+}
+
+async setLanguage(getter) {
+    const res = await getter
+    langData = await res.json()
+
+    http:get {
+        url: "https://go.yurba.one/api/status", 
+        output: apiStatusHandler
+    }
+}
+
+async apiStatusHandler(getter) {
+    const res = await getter
+    const json = await res.json()
+
+    const status: APIStatus = {
+        ok: json.ok,
+        version: json.version
+    }
+    let jsonSize = sizeof json
+
+    if json.ok == true {
+        let h = render { 
+            <div.response>
+                <img src='/files/media/pslogo.png'>
+                <p.title>PrettyScript HTTP.API Example</p>
+                <p.url>${langData.status}: ${json.ok}. ${langData.version}: ${json.version} (${jsonSize})</p>
+            </div>, document.body
+        }
+        $("body").appendChild(h)
+    }
+}

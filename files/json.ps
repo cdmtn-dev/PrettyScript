@@ -1,0 +1,13 @@
+use async
+use http;
+use json;
+
+link("../files/css/main.css")
+
+const res = await http.send({
+    url: "https://go.yurba.one/api/status"
+})
+
+if(res.status == 200) {
+    debug(res)
+}

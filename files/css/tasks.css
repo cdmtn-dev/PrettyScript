@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+p {
+    margin: 0;
+}
+
+.task {
+    background: #0000000d;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: small;
+}

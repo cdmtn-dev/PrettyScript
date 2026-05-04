@@ -1,0 +1,45 @@
+use async
+
+link("./files/css/main.css")
+
+// observer element spawn
+
+const selector = "#app"
+
+fn setSpawnObserver() {
+    observe selector {
+        type: "spawn",
+        output: onSpawn
+    }
+}
+fn setAttrChangeObserver() {
+    observe selector {
+        type: "attributeChange",
+        output: onAttrChange
+    }
+}
+
+// observer element spawn
+sleep 2000
+
+setSpawnObserver()
+
+const t = createElement("div")
+t.id = "app"
+
+document.body.appendChild(t)
+
+// observer element attribute change
+sleep 1000
+
+setAttrChangeObserver()
+
+document.querySelector("#app").setAttribute("g", true)
+
+fn onSpawn(el) {
+    el.textContent = "Finded!"
+    log("Element finded!")
+}
+fn onAttrChange(el, attributes) {
+    log(el, attributes)
+}

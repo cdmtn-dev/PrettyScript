@@ -1,0 +1,25 @@
+use time;
+
+fn dates(format = "24") {
+    let time = new Time();
+    time.setTimeFormat(format)
+
+    const times = {
+        "TIME FORMAT": time.hoursFormat,
+        "UNIX": time.now(),
+        "RAND DATE": time.date("%mm.%dd.%yyyy, %hh:%ii", time.rand()),
+        "US DATE": time.date("%mm.%dd.%yyyy, %hh:%ii", time.now()),
+        "DAY": time.day(),
+        "MONTH": time.month(),
+        "YEAR": time.year(),
+        "HOURS": time.hour(),
+        "MINUTES": time.min(),
+        "SECONDS": time.sec(),
+        "MS": time.ms(),
+        "DAY OF THE WEEK": time.dayWeek(),
+        "DAY OF THE WEEK (Short)": time.dayWeekShort()
+    }
+
+    logt(times)
+}
+dates()

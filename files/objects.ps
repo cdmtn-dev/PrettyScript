@@ -1,0 +1,17 @@
+use async
+
+// create object and freeze obj.user key and all other keys in "user" key
+// lock obj locks whole object
+// lock obj.user* locks whole user key deep
+// lock obj.user locks only key, not deep
+
+const obj = { user: { name: "Example", id: 0 } }
+lock obj.user*
+
+// check if element in object/array
+
+let objectToHave = { user: "John" }
+log(have(objectToHave, "user"))
+
+let arrayToHave = ["John", "Mike", "Alice"]
+log(have(arrayToHave, "John"))

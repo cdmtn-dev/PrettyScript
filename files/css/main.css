@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    background: #0b0b0b;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+button {
+    background: #191919;
+    color: white;
+    border: 1px solid #ffffff0a;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: inherit;
+    margin-left: 10px;
+    transition: .2s;
+}
+button:hover {
+    cursor: pointer;
+    opacity: .5;
+}
